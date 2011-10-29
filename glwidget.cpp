@@ -52,7 +52,6 @@
 #include <math.h>
 
 #include <opencv/cv.h>
-#include <opencv/highgui.h>
 
 #include <QtGui>
 #include <QtOpenGL>
