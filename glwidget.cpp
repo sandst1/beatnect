@@ -151,7 +151,6 @@ void GLWidget::initializeGL()
 
 void GLWidget::paintGL()
 {
-    qDebug() << __PRETTY_FUNCTION__;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
@@ -216,8 +215,6 @@ void GLWidget::paintGL()
     glTexCoord2f(0, 1); glVertex3f(640,480,0);
     glEnd();
 
-    qDebug() << __PRETTY_FUNCTION__ << "out";
-
 }
 
 void GLWidget::resizeGL(int width, int height)
@@ -234,7 +231,6 @@ uint16_t t_gamma[2048];
 
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp)
 {
-    qDebug() << __PRETTY_FUNCTION__;
         int i;
         uint16_t *depth = (uint16_t*)v_depth;
 
@@ -287,7 +283,6 @@ void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp)
 
 void rgb_cb(freenect_device *dev, void *rgb, uint32_t timestamp)
 {
-    qDebug() << __PRETTY_FUNCTION__;
         pthread_mutex_lock(&gl_backbuf_mutex);
 
         // swap buffers
@@ -402,11 +397,6 @@ void GLWidget::start()
             qDebug("pthread_create failed\n");
             return;
     }
-
-    // OS X requires GLUT to run on the main thread
-    //gl_threadfunc(NULL);
-
-    //return 0;
 
     timer->start();
 
